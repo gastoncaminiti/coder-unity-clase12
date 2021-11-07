@@ -129,6 +129,7 @@ MonoBehaviour:
   animPlayer: {fileID: 7243462081693343987}
   punchSound: {fileID: 0}
   walkSound: {fileID: 0}
+  rbPlayer: {fileID: 0}
 --- !u!82 &1126932891806941693
 AudioSource:
   m_ObjectHideFlags: 0
@@ -240,6 +241,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5922001566397963232}
     m_Modifications:
+    - target: {fileID: 7674732993010680830, guid: eb1eb9032f21583438bd0478f28f2182, type: 3}
+      propertyPath: m_Layer
+      value: 29
+      objectReference: {fileID: 0}
+    - target: {fileID: 7674732993010680830, guid: eb1eb9032f21583438bd0478f28f2182, type: 3}
+      propertyPath: m_TagString
+      value: PlayerHand
+      objectReference: {fileID: 0}
     - target: {fileID: 8418356824989640370, guid: eb1eb9032f21583438bd0478f28f2182, type: 3}
       propertyPath: m_Name
       value: Vampire

@@ -15,6 +15,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private AudioClip punchSound;
     [SerializeField] private AudioClip walkSound;
 
+    [SerializeField] private Rigidbody rbPlayer;
+
     private AudioSource audioPlayer;
 
     // Start is called before the first frame update
@@ -22,12 +24,12 @@ public class PlayerController : MonoBehaviour
     {
         animPlayer.SetBool("isRun", false);
         audioPlayer = GetComponent<AudioSource>();
+        rbPlayer    = GetComponent<Rigidbody>();
     }
     void Update()
     {
-        RotatePlayer();
-        Move();
 
+        RotatePlayer();
         if (Input.GetKeyDown(KeyCode.Space))
         {
             audioPlayer.PlayOneShot(punchSound, 1f);
@@ -41,6 +43,12 @@ public class PlayerController : MonoBehaviour
 
 
     }
+
+    private void FixedUpdate()
+    {
+        Move();
+    }
+
     private void Move()
     {
         float ejeHorizontal = Input.GetAxis("Horizontal");
@@ -48,8 +56,10 @@ public class PlayerController : MonoBehaviour
 
         if (ejeHorizontal != 0 || ejeVertical != 0) {
             animPlayer.SetBool("isRun", true);
-            Vector3 direction = new Vector3(ejeHorizontal, 0, ejeVertical);
-            transform.Translate(speedPlayer * Time.deltaTime * direction);
+            //Vector3 direction = new Vector3(ejeHorizontal, 0, ejeVertical);
+            //transform.Translate(speedPlayer * Time.deltaTime * direction);
+            rbPlayer.AddRelativeForce(Vector3.forward * speedPlayer * ejeVertical, ForceMode.Acceleration);
+            rbPlayer.AddRelativeForce(Vector3.right  * speedPlayer * ejeHorizontal, ForceMode.Acceleration);
             if (!audioPlayer.isPlaying)
             {
                 audioPlayer.PlayOneShot(walkSound, 0.5f);

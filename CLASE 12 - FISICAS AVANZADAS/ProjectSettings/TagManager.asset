@@ -3,7 +3,11 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Generator
+  - Enemy
+  - PlayerHand
+  - Ground
   layers:
   - Default
   - TransparentFX
@@ -34,9 +38,9 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
-  - 
+  - Punch
+  - Ground
+  - Item
   m_SortingLayers:
   - name: Default
     uniqueID: 0
